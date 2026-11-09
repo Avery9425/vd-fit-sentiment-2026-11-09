@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>品牌舆情简报 · 第 2 期（2026-11-09）</title>
+<style>
+  :root{
+    --ink:#3d3423; --brand:#8a6a2a; --brand2:#a67c2e; --accent:#c9a24b;
+    --pos:#2e7d5b; --neg:#c0392b; --neu:#8a6d3b; --mix:#7d5ba6;
+    --bg:#faf6ec; --card:#ffffff; --line:#e9dcc0; --muted:#7a6a4a;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif; background:var(--bg); color:var(--ink); line-height:1.7;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 18px 60px;}
+
+  .hero{background:linear-gradient(135deg,#5c4416 0%,#8a6a2a 55%,#c9a24b 100%); color:#fff; padding:40px 18px 30px; border-radius:0 0 18px 18px;}
+  .hero .brand{font-family:Arial,Helvetica,sans-serif; font-size:12px; letter-spacing:2px; color:#f0e0b0; margin-bottom:10px;}
+  .hero h1{font-size:30px; font-weight:700; letter-spacing:1px;}
+  .hero .sub{font-size:14px; color:#f7ecd0; margin-top:6px; letter-spacing:1px;}
+  .pills{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
+  .pill{background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3); color:#fbf3d9; border-radius:20px; padding:4px 12px; font-size:12px;}
+  .pill a{color:#fff; text-decoration:underline;}
+
+  section{margin-top:26px;}
+  .sec-title{display:flex; align-items:center; gap:10px; font-size:19px; font-weight:700; color:var(--brand); margin-bottom:12px;}
+  .sec-title .no{background:var(--brand); color:#fff; width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; box-shadow:0 1px 3px rgba(15,76,92,.06);}
+
+  .findings{display:flex; flex-direction:column; gap:10px;}
+  .finding{display:flex; gap:12px; align-items:flex-start; padding:10px 12px; background:#fdf9ee; border-left:4px solid var(--accent); border-radius:6px; font-size:14px;}
+  .finding b{color:var(--brand); white-space:nowrap;}
+  .finding.risk{border-left-color:var(--neg);}
+  .finding.pos{border-left-color:var(--pos);}
+
+  .card{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  table{width:100%; min-width:720px; border-collapse:collapse; font-size:13px; margin-top:6px;}
+  th,td{border:1px solid var(--line); padding:8px 9px; text-align:left; vertical-align:top;}
+  @media (max-width:640px){
+    th,td{padding:6px 6px; font-size:12px;}
+    .hero h1{font-size:22px;}
+    .wrap{padding:0 10px 40px;}
+    .finding{font-size:13px;}
+    .finding b{white-space:normal;}
+  }
+  th{background:#f5ecd6; color:var(--brand); font-weight:600; white-space:nowrap;}
+  .bar{height:10px; background:#efe4c9; border-radius:5px; overflow:hidden; min-width:70px;}
+  .bar i{display:block; height:100%; background:linear-gradient(90deg,#d4af37,#b8860b);}
+  .tag{display:inline-block; padding:1px 8px; border-radius:12px; font-size:12px; white-space:nowrap;}
+  .t-neg{background:#fbeceb; color:var(--neg); border:1px solid #ecc7c2;}
+  .t-mix{background:#f1ecf7; color:var(--mix); border:1px solid #d9ccee;}
+  .t-pos{background:#eaf5ef; color:var(--pos); border:1px solid #c4e2d1;}
+  .t-neu{background:#faf3e4; color:var(--neu); border:1px solid #ecd9ae;}
+  .delta{font-size:12px; color:var(--muted); white-space:nowrap;}
+  .delta.up{color:var(--pos);}
+  .delta.down{color:var(--neg);}
+
+  details{border:1px solid var(--line); border-radius:10px; margin-bottom:10px; background:#fff; overflow:hidden;}
+  summary{cursor:pointer; padding:12px 16px; font-size:15px; font-weight:600; color:var(--ink); background:#fffdf6; list-style:none; display:flex; align-items:center; gap:10px;}
+  summary::-webkit-details-marker{display:none;}
+  summary .chev{color:var(--accent); font-size:12px; transition:.2s;}
+  details[open] summary .chev{transform:rotate(90deg);}
+  summary .meta{font-size:12px; font-weight:400; color:var(--muted); margin-left:auto; white-space:nowrap;}
+  .det{padding:4px 18px 16px; font-size:14px;}
+  .det h4{color:var(--brand2); font-size:14px; margin:10px 0 4px;}
+  .det ul{padding-left:20px; margin:4px 0;}
+  .det li{margin:3px 0;}
+  .src{color:var(--brand2); font-size:12px; word-break:break-all;}
+  .kpi-row{display:flex; flex-wrap:wrap; gap:14px; margin:8px 0;}
+  .kpi{flex:1; min-width:150px; background:#fbf5e2; border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:13px;}
+  .kpi b{display:block; color:var(--brand); font-size:16px;}
+  .past{display:inline-block; background:#f6efe0; border:1px dashed var(--accent); color:var(--brand); border-radius:6px; padding:0 6px; font-size:12px; margin-left:4px;}
+  .past a{color:var(--brand);}
+
+  .cat-grid{display:flex; flex-wrap:wrap; gap:14px;}
+  .cat{flex:1; min-width:250px; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fff;}
+  .cat h4{color:var(--brand); font-size:14px; margin-bottom:6px;}
+
+  .foot{margin-top:34px; padding-top:16px; border-top:1px solid var(--line); text-align:center; color:var(--muted); font-size:12px; letter-spacing:1px; font-family:Arial,Helvetica,sans-serif;}
+  .note{font-size:12px; color:var(--muted); margin-top:10px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap" style="padding-bottom:0;">
+    <div class="brand">VD FIT 产品团队</div>
+    <h1>品牌舆情简报 · 第 2 期</h1>
+    <div class="sub">Brand Reputation &amp; Sentiment Review</div>
+    <div class="pills">
+      <span class="pill">期次：第 2 期</span>
+      <span class="pill">时间：2026-11-09</span>
+      <span class="pill">监测窗口：2026-11-02 至 2026-11-09（近 7 天）</span>
+      <span class="pill">监测品牌：18 家</span>
+      <span class="pill">往期：<a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期 · 2026-11-01</a></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="sec-title"><span class="no">01</span>执行摘要 · 本期最重要发现</div>
+    <div class="card findings">
+      <div class="finding risk"><b>负面焦点转移</b><span>SKG 的健腹仪安全争议与 IPO 质疑本期无新增公开进展<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>；本期负面重心转向"售后承诺兑现"：AMIRO觅光 11/04 新增投诉（购买时承诺终身免费换新、换新后再度失效无渠道），Ulike 黑猫页近 30 天出现配件爆裂与赠品漏发两条投诉。</span></div>
+      <div class="finding risk"><b>安全个案</b><span>本期补录名塑光域四极 V 脸仪灼伤投诉（脸部掉皮、凹陷，退款被拒，2026-01 发起，此前检索未覆盖）；另有 SEAYEO 红光健发梳 11/03 反映维修后一周再故障、Beautigo 脱毛仪 11/02 退货被拒。安全与售后仍是行业级痛点。</span></div>
+      <div class="finding pos"><b>双11 榜单</b><span>雅萌闪修仪 Pro 登京东美容去皱机榜 TOP1（11/07 更新）；极萌胶原炮 7199 元档位已售 100+；VD FIT 全燃美塑仪 679 元、2000+ 人付款（11/08 更新）。榜单与销量是本期最活跃的信息面。</span></div>
+      <div class="finding risk"><b>口碑分化</b><span>CLUSTER 淘宝问答页（11/06 更新）出现"没有用""智商税"等负面评价，与其 4.8 分口碑页并存，低活跃品牌的评价结构开始分化，需持续观察。</span></div>
+      <div class="finding"><b>行业规模</b><span>奥维监测（10/14）：2026 年中国家庭美容仪器行业营收约 480 亿元、同比 +12.3%，面部护理仪器增速突破 15%，行业渗透率 32.8%。增速回升，但增量集中于头部与白牌两端。<span class="past">本期首次引用，后续以最新口径为准</span></span></div>
+      <div class="finding"><b>海外合规</b><span>JOVS 新增 FDA 510(k) 文档（JE2 电刺激美容设备），并上线 EMS 塑形腰带 Pro（11/04）；NuFACE FIX+ 的 510(k) 记录 11/02 更新；AMIRO 海外站 11/06 开启黑五预售并上线 Spectra 10-in-1 面罩。</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title"><span class="no">02</span>品牌总览（近 7 天）</div>
+    <div class="card">
+      <table>
+        <tr><th>品牌</th><th>相对声量*</th><th>情感倾向</th><th>本期核心议题</th><th>较第 1 期</th></tr>
+        <tr><td><b>SKG</b></td><td><div class="bar"><i style="width:88%"></i></div>高</td><td><span class="tag t-neg">负面为主</span></td><td>安全争议与 IPO 质疑无新增进展；履约/售后议题延续</td><td class="delta">持平（详见第 1 期）</td></tr>
+        <tr><td><b>极萌 Jmoon</b></td><td><div class="bar"><i style="width:78%"></i></div>中高</td><td><span class="tag t-mix">正负交织</span></td><td>双11 胶原炮销量、水光仪 Pro 新品；维修定价争议延续</td><td class="delta up">↑ 新品活跃</td></tr>
+        <tr><td><b>雅萌 YA-MAN</b></td><td><div class="bar"><i style="width:74%"></i></div>中高</td><td><span class="tag t-pos">中性偏正</span></td><td>京东去皱榜 TOP1、日本新店重开、11 月上旬新品上市</td><td class="delta up">↑ 榜单上升</td></tr>
+        <tr><td><b>AMIRO觅光</b></td><td><div class="bar"><i style="width:72%"></i></div>中高</td><td><span class="tag t-neg">负面为主</span></td><td>11/04 售后承诺未兑现投诉；海外黑五预售与面罩新品</td><td class="delta">持平</td></tr>
+        <tr><td><b>初普 TriPollar</b></td><td><div class="bar"><i style="width:68%"></i></div>中高</td><td><span class="tag t-neg">负面为主</span></td><td>召回履行争议（未获通知、超期拒修）；功效宣称争议见第 1 期</td><td class="delta">持平</td></tr>
+        <tr><td><b>Ulike</b></td><td><div class="bar"><i style="width:66%"></i></div>中高</td><td><span class="tag t-mix">正负交织</span></td><td>黑猫近 30 天配件爆裂、赠品漏发两条投诉</td><td class="delta down">↓ 负面增多</td></tr>
+        <tr><td><b>NuFACE</b></td><td><div class="bar"><i style="width:52%"></i></div>中</td><td><span class="tag t-neu">中性</span></td><td>FIX+ 510(k) 记录更新；不良事件报告见第 1 期</td><td class="delta">持平</td></tr>
+        <tr><td><b>JOVS 骄予时</b></td><td><div class="bar"><i style="width:52%"></i></div>中</td><td><span class="tag t-pos">正面为主</span></td><td>新增 FDA 510(k)；EMS 塑形腰带 Pro 上线</td><td class="delta up">↑ 品类扩张</td></tr>
+        <tr><td><b>飞利浦</b></td><td><div class="bar"><i style="width:44%"></i></div>中</td><td><span class="tag t-neu">中性偏正</span></td><td>无显著新增动态，产品页维持更新</td><td class="delta">持平</td></tr>
+        <tr><td><b>科施佳 QuasarMD</b></td><td><div class="bar"><i style="width:44%"></i></div>中低</td><td><span class="tag t-pos">中性偏正</span></td><td>ZOL 榜 Mask Pro 9.9 分；身体线（美臀仪/塑形腰带）在售</td><td class="delta up">↑ 品类扩张</td></tr>
+        <tr><td><b>OMR 欧美然</b></td><td><div class="bar"><i style="width:38%"></i></div>中低</td><td><span class="tag t-neu">中性偏正</span></td><td>S9 Pro 多套装在售；内容投放无新增</td><td class="delta">持平（详见第 1 期）</td></tr>
+        <tr><td><b>名塑</b></td><td><div class="bar"><i style="width:34%"></i></div>低</td><td><span class="tag t-mix">正负交织</span></td><td>补录光域四极 V 脸仪灼伤投诉（2026-01）</td><td class="delta down">↓ 出现负面</td></tr>
+        <tr><td><b>金茉 GEMO</b></td><td><div class="bar"><i style="width:32%"></i></div>低</td><td><span class="tag t-neu">中性偏正</span></td><td>双11 促销与补贴在推；榜单信息见第 1 期</td><td class="delta">持平</td></tr>
+        <tr><td><b>VD FIT</b></td><td><div class="bar"><i style="width:28%"></i></div>低</td><td><span class="tag t-neu">中性</span></td><td>全燃美塑仪 679 元、2000+ 人付款（11/08）</td><td class="delta up">↑ 销量可见</td></tr>
+        <tr><td><b>CLUSTER</b></td><td><div class="bar"><i style="width:24%"></i></div>低</td><td><span class="tag t-mix">中性偏负</span></td><td>问答页出现"无用/智商税"评价，与 4.8 分口碑并存</td><td class="delta down">↓ 口碑分化</td></tr>
+        <tr><td><b>slleaf</b></td><td><div class="bar"><i style="width:18%"></i></div>极低</td><td><span class="tag t-neu">无显著动态</span></td><td>本期无新增命中</td><td class="delta">持平</td></tr>
+        <tr><td><b>索朗特 SOLLOATE</b></td><td><div class="bar"><i style="width:16%"></i></div>极低</td><td><span class="tag t-neu">中性</span></td><td>腰部 EMS 美塑仪 539 元、眼部按摩仪在售</td><td class="delta up">↑ 渠道有声量</td></tr>
+        <tr><td><b>蓝宝 BLAUPUNKT</b></td><td><div class="bar"><i style="width:16%"></i></div>极低</td><td><span class="tag t-neu">中性</span></td><td>腰部 EMS 按摩器、头部/眼部按摩仪在售</td><td class="delta up">↑ 渠道有声量</td></tr>
+      </table>
+      <div class="note">* 相对声量为示意性分级，基于本期公开检索的命中量与来源性质综合判断，非精确统计。"较第 1 期"仅反映本期可观察到的变化方向。同一事件往期已详报且无新进展的，本期仅一句话带过并标注往期链接。</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title"><span class="no">03</span>品牌分述（按声量重点展开，可点开查看详情与来源）</div>
+
+    <details>
+      <summary><span class="chev">▶</span>SKG<span class="meta">负面为主 · 声量高 · 无新增进展</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>健腹仪安全争议（使用者自述黄体破裂、尿血等）与第四次冲刺 IPO 的经营质疑，本期未见新的公开进展或企业回应<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>新增可核实信息：企查查页面 11/08 更新显示，该公司 10/29 新增一条"侵害实用新型专利权纠纷"开庭公告（涉诉信息，尚待判决）。</li>
+          <li>品牌侧动作：9/1 与北京协和医学院签署智能可穿戴睡眠分期及呼吸暂停检测算法研究合作（背景事件，非本期新增）；11/06 日本市场经代理商上架颈部护理两款机型（海外渠道扩展）。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>企查查企业页 https://www.qcc.com/creport/10453eb2805842884cc772b8a12259fd.html</li>
+          <li>启信宝开庭公告 https://www.qixin.com/company/af6e783a-49ae-47de-85a0-aad808c13b55?section=people</li>
+          <li>SKG 官网合作新闻 https://cn.skg.com/news/skg-news-3</li>
+          <li>日本上架公告（PR TIMES）https://prtimes.jp/main/html/rd/p/000000168.000080785.html</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>极萌 Jmoon<span class="meta">正负交织 · 声量中高</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>候选增量（大促与新品）：淘宝"双11 抢购"胶原炮 7199 元档位显示已售 100+ 件（11/05 更新）；香港站 11/07 上新"水光美容仪 Pro"（4.9/5，23 条评价）；台湾站 11/04 大熨斗页面标注"美容仪销售 TOP1"；京东 11/06 黄金微雕、第二代大排灯 2.0 均挂"价保双11"。</li>
+          <li>负面（延续）：维修"一口价 600 元 / 换新 1000 元"未提前公示的争议，第 1 期已详报，本期无企业公开说明<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>负面（跨窗口背景，需留意）：2025-09-18 有消费者投诉大排灯使用后视力下降，品牌方以"无法判定直接关联"为由提出退货退款并"最高赔付 500 元"，两次仅退款申请被拒（腾讯网报道，非本期新增）。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>淘宝纹美容仪列表（11/05 更新）http://www.taobao.com/list/product/%E7%BA%B9%E7%BE%8E%E5%AE%B9%E4%BB%AA.htm</li>
+          <li>Jmoon 香港站 https://jmoon.com.hk/</li>
+          <li>Jmoon 台湾站 M12 https://jmoon.tw/products/m12</li>
+          <li>京东极萌商品页 https://www.jd.com/chanpin/1894362.html</li>
+          <li>大排灯视力投诉报道 https://view.inews.qq.com/a/20250918A06W6Q00</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>雅萌 YA-MAN<span class="meta">中性偏正 · 声量中高 · 上升</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>榜单：京东"美容去皱机品牌排行榜"11/07 更新，雅萌位居 TOP1，主推闪修仪 Pro（价保双11），评价区以"趁双11 入手、更适合自己"类正面内容为主。</li>
+          <li>线下与新品：日本阪急梅田本店雅萌专柜 11/11 重装开业（11/06 公告）；多功能美颜器"Deep Lift Duo"（温感+冷感双模式）自 11 月上旬开售（10/08 预告，本期进入上市期）。</li>
+          <li>负面：10/31 色素/长斑个例投诉延续，本期无新增聚集性反馈<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>京东美容去皱机榜（11/07）https://www.jd.com/phb/737fae8ec082b1045e4.html</li>
+          <li>阪急梅田店重装公告 https://www.ya-man.co.jp/news/26442/</li>
+          <li>Deep Lift Duo 发售公告 https://www.ya-man.co.jp/news/26347/</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>AMIRO觅光<span class="meta">负面为主 · 声量中高</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>新增投诉（11/04，黑猫上海站）：用户 2022 年花 2180 元购买美容仪，购买时承诺"终身免费换新"，首年电池即失效并已完成一次换新，此后长期闲置，近期使用时发现无法正常工作，质疑承诺未兑现。</li>
+          <li>同类售后问题第 1 期已详报（旧订单无官方维修渠道）<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>正向/中性：海外站 11/06 开启黑五早鸟预售（最高减 400 美元），并上线 Spectra 10-in-1 LED 面罩新品；国内 10/23 深圳礼品家居展展出叠叠镜等 2026 新品（背景，第 1 期未覆盖）。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>黑猫投诉（觅光·上海站）https://sh.tousu.sina.com.cn/company/view/?couid=5822056409</li>
+          <li>AMIRO 海外站 https://amirobeauty.com/</li>
+          <li>AMIRO 官网新闻 https://www.amiro.com.cn/news/82</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>初普 TriPollar<span class="meta">负面为主 · 声量中高</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>新增议题（召回履行）：黑猫投诉页最新一条反映，2020 年双 11 以 4464 元购买脸部+眼部美容仪，同一批次产品存在缺陷并已实施召回，但消费者未收到通知而错过期限，商家以"超期"为由拒绝召回、要求自费维修。（该条由消费者发起，页面标注时间为 10/20，第 1 期未覆盖）</li>
+          <li>第 1 期的虚假宣传投诉与 FDA 不良事件报告，本期无新增进展<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>提示：召回通知触达率是本期新出现的争议点，属"有义务但难验证"的环节。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>黑猫投诉（TriPollar初普·四川站）https://sc.tousu.sina.com.cn/company/view/?couid=5605582816</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>Ulike<span class="meta">正负交织 · 声量中高 · 负面增多</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>黑猫投诉湖南站页面（"近 30 天"条目）出现两条较重投诉：其一称首台仪器出光配件故障时"爆炸、玻璃碎片散落"，接受售后换新后低频使用再度出现同样问题；其二称官方旗舰店漏发标配赠品、以虚假补发单号拖延（均为消费者自述，页面时间标注为 8 月）。</li>
+          <li>第 1 期的 Air4 Max 无法开机个例，本期未见扩散讨论<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>渠道：香港站 Air 2 Max 等产品页维持更新，主打蓝宝石冰点与"全球销量第一"第三方数据（弗若斯特沙利文，2026 年 8 月完成研究）。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>黑猫投诉（Ulike·湖南站）https://hunan.tousu.sina.com.cn/company/view/?couid=5059593785</li>
+          <li>Ulike 香港站 Air 2 Max https://hk.ulike.com/products/ulike-air-2-max-new</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>NuFACE<span class="meta">中性 · 声量中</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>合规文档：FDA 510(k) 记录 K240564（NuFACE FIX+，面部经皮电刺激类）页面 11/02 更新；同类 K191672（NuFACE Mini）同日更新。属常规监管档案更新，非新批准。</li>
+          <li>第 1 期 Trinity+ 面部神经痛等不良事件报告，本期无新增同类报告<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>官网 11/05 维持"FDA-cleared"表述与证言内容。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>FDA 510(k) K240564 https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/pmn.cfm?ID=K240564</li>
+          <li>FDA 510(k) K191672 https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/pmn.cfm?ID=K191672</li>
+          <li>NuFACE 官网 https://www.mynuface.com/</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>JOVS 骄予时<span class="meta">正面为主 · 声量中 · 品类扩张</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>合规文档：FDA 510(k) 摘要 K250227（JOVS Electric Stimulation Beauty Device JE2，面部与颈部经皮神经电刺激，OTC 美容用途）公开可查。</li>
+          <li>新品（11/04）：上线"EMS 塑形腰带 Pro"（EMS+红光+热敷三合一），页面引用 -28% 腰腹松弛度、+24% 核心肌群激活等自家测试数据；11/02 基础款 EMS 塑形腰带页亦更新。</li>
+          <li>第 1 期的 6D/4D 面罩正面向内容，本期无负面对冲信息<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>提示：其腰带页引用"产后腹肌修复""缓解经期不适"等表述，属功效宣称范畴，可核验性有限。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>FDA 510(k) 摘要 K250227 https://www.accessdata.fda.gov/cdrh_docs/pdf25/K250227.pdf</li>
+          <li>JOVS EMS 塑形腰带 Pro https://jovs.com/products/jovs-ems-sculpting-red-light-therapy-belt-pro</li>
+          <li>JOVS EMS 腰带基础款 https://jovs.com/products/ems-sculpting-belt</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>飞利浦<span class="meta">中性偏正 · 声量中 · 无显著新增</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>本期公开渠道无重大新增舆情；官网 11/04 对 VisaPure MEN 洁面仪等个护产品页做常规更新。</li>
+          <li>10/5 Elle 预告的智能美容仪新品（ELLEphoria，11/13–15 布拉格）尚未开展，属下一窗口可观察项<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>背景（跨窗口）：8/25 已在海外发布 ReAura LED 面罩，9/01 发布 Lumea 9900 Pro（带语音引导的 IPL 脱毛仪），两条均非本期新增。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>飞利浦 VisaPure MEN 页 https://www.philips.com.cn/c-p/MS1011_03/-</li>
+          <li>ReAura 发布稿 https://www.philips.com/a-w/about/news/archive/standard/news/articles/2026/philips-launches-reaura-a-new-led-skincare-mask-and-beauty-ritual-for-younger-looking-skin.html</li>
+          <li>Lumea 9900 Pro 发布稿 https://www.philips.com/a-w/about/news/archive/standard/news/articles/2026/philips-launches-revolutionary-lumea-9900-pro-the-first-at-home-intense-pulsed-lightpl-hair-removal-device.html</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>科施佳 QuasarMD<span class="meta">中性偏正 · 声量中低 · 品类扩张</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>榜单：中关村在线热门美容仪榜 11/08 更新，Mask Pro 9.9 分（4499 元）、Mask 白色 10.0 分（2899 元），为其评分最高的两款。</li>
+          <li>品类扩张：淘宝"塑腰仪"类目页显示科施佳美臀仪（光电紧塑，1543 元）与塑形腰带（腹部热敷/紧肤，614 元）在售，从面部光疗延伸至身体塑形线。</li>
+          <li>第 1 期的面罩续航个例投诉与消委会五星温升结论，本期无新增进展<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>ZOL 热门美容仪榜（11/08）https://wap.zol.com.cn/top/Cosmetic_instrument/hot.html</li>
+          <li>淘宝塑腰仪类目页 http://www.taobao.com/list/product/%E5%A1%91%E8%85%B0%E4%BB%AA.htm</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>OMR 欧美然<span class="meta">中性偏正 · 声量中低</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>S9 Pro 在京东以"标准版/宠粉套装（主机+灵动带+凝露 100g×2）"等多规格在售；淘宝侧另有"抖音同款"甩脂腰带（248 元档）在推，形成高低价位组合。</li>
+          <li>凤凰网 10/17 深度评测、10/22 选购指南的系列化内容投放，第 1 期已详报，本期无新增投放<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>本期未见新的负面命中。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>京东 OMR 价格页 https://m.jd.com/jiage/131888bc869532885683.html</li>
+          <li>淘宝塑腰仪类目页 http://www.taobao.com/list/product/%E5%A1%91%E8%85%B0%E4%BB%AA.htm</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>名塑<span class="meta">正负交织 · 声量低 · 出现负面</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>补录（重要平衡信息）：消费保平台有投诉称，在"名塑官方旗舰店"购买光域四极 V 脸仪，到货试用后脸部灼伤、掉皮凹陷；申请退款被拒，商家提出"赔付 100 元并要求确认收货与追加好评"，投诉人拒绝。该投诉发起于 2026-01-18，第 1 期检索未覆盖，本期补录并标注时间。</li>
+          <li>第 1 期的新品好评（光域 4.0、AI 水光仪）仍可查，但与上述安全个案并存，情感判断由"正面为主"调整为"正负交织"<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>提示：该投诉描述涉及"以赔偿换好评"的操作，属平台治理范畴，需以平台处理结果为准。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>消费保投诉页 https://www.xfb315.com/tousu/100384729</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>金茉 GEMO<span class="meta">中性偏正 · 声量低</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>淘宝类目页 11/08 更新：W10 水光仪、AI 智能水光仪、奢华抗衰套装等以"补贴再减 15%"参与双11，高端线价格带维持。</li>
+          <li>京东脸部提拉榜 TOP1 的信息第 1 期已报，本期无新榜单变化<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>本期未见负面命中。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>淘宝金茉类目页（11/08）https://mobile-phone.taobao.com/chanpin/39f9321416895618c4832566d3cd9861.html</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>VD FIT<span class="meta">中性 · 声量低 · 销量可见</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>渠道数据：淘宝"智能健腹仪"类目页 11/08 更新，VD FIT 旗舰店"全燃美塑仪 EMS 智能脉冲燃脂按摩揉腹仪"标价 679 元、显示 2000+ 人付款（发货地浙江温州）。</li>
+          <li>第 1 期记录的京东 SKU"商品已下架"状态，本期未见恢复迹象<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>本期公开渠道未见媒体评测、用户讨论或负面投诉命中。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>淘宝 VD FIT 旗舰店类目页（11/08）https://mobile-phone.taobao.com/chanpin/5767d933d0e860fcf2db793fb891dfba.html</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>CLUSTER<span class="meta">中性偏负 · 声量低 · 口碑分化</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>淘宝点评问答页 11/06 更新，出现"没有用 姐妹 智商税""无用"等直接否定评价，同时保留"不错""服帖"等正面回答；与 4.8 分口碑页形成明显分化。</li>
+          <li>第 1 期的 4.8 分口碑页信息仍有效<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</li>
+          <li>提示：问答区的负面多为"效果预期落空"，而非质量故障，属品类共性问题（EMS 腰带脱脂效果预期管理）。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>淘宝点评问答页（11/06）https://pingjia.taobao.com/category-yaozhui_2650/UjBpSUF2eVFJNTlVYzRRdVVEeVRoQT09</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>slleaf<span class="meta">无显著动态</span></summary>
+      <div class="det">
+        <p>本期公开渠道（新闻、投诉平台、评测、电商口碑）未命中 slleaf 的新增信息，ZOL 榜单位次信息见第 1 期。按低成本检索规则，标注"无显著动态"。</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>索朗特 SOLLOATE<span class="meta">中性 · 声量极低 · 渠道有声量</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>由"无显著动态"转为可检索到在售信息：京东 SOLLOATE 眼部按摩仪（雾化+仿真指压震动+恒温热敷，旗舰新款/经典款）11/08 页面在售。</li>
+          <li>淘宝澳门站 11/08 显示"索朗特美塑仪腰部按摩 EMS 微电流健腹腰带"539 元在售（SLT 健腹带同价），产品线覆盖眼部与腰腹两类。</li>
+          <li>本期未见负面或聚集性反馈。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>京东索朗特页（11/08）https://www.jd.com/cppf/737ed1f39e4e793745c.html</li>
+          <li>淘宝澳门腰部 EMS 页（11/08）https://mo.world.taobao.com/product/%E8%85%B0%E9%83%A8ems.htm</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="chev">▶</span>蓝宝 BLAUPUNKT<span class="meta">中性 · 声量极低 · 渠道有声量</span></summary>
+      <div class="det">
+        <h4>本期舆情要点</h4>
+        <ul>
+          <li>由"无显著动态"转为可检索到在售信息：淘宝 11/08 类目页显示腰部 EMS 微电流脉冲热敷按摩器、无线头部按摩器、眼部按摩仪等个护产品在售。</li>
+          <li>苏宁国际 11/04 更新 BP-HY01 眼部按摩仪参数页（恒温热敷、无线折叠、蓝牙音乐）。</li>
+          <li>一个第三方渠道（凤凰知音里程商城）该型号页面显示"商品已下架"，属渠道末端状态，不代表品牌整体。</li>
+          <li>本期未见负面新闻或聚集性投诉；美容仪主品类仍无明显声量。</li>
+        </ul>
+        <h4>来源</h4>
+        <ul class="src">
+          <li>淘宝德国蓝宝类目页（11/08）https://mobile-phone.taobao.com/chanpin/80aba4c253cc33c3a2e27d31f0f0d2adb1e207e2775abd7552e0cb00e525476e.html</li>
+          <li>苏宁国际 BP-HY01 https://fe.suning.com/bigimages/12305205167.html</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <div class="sec-title"><span class="no">04</span>品类与功能交叉观察</div>
+    <div class="cat-grid">
+      <div class="cat">
+        <h4>双11 大促与榜单</h4>
+        <ul style="padding-left:18px;font-size:13px;margin-top:6px;">
+          <li>本期为双11 主战场（10/20 开卖、11/11 收尾），各品牌动作集中在"价保双11"、补贴直降与榜单占位，而非新品发布。</li>
+          <li>榜单分化明显：雅萌拿下京东去皱机 TOP1、科施佳 Mask Pro 9.9 分；极萌胶原炮 7199 元档位销量 100+；VD FIT 679 元档位 2000+ 付款——高价线靠榜单、低价线靠销量，中间价位声量最弱。</li>
+        </ul>
+      </div>
+      <div class="cat">
+        <h4>售后承诺兑现（本期新焦点）</h4>
+        <ul style="padding-left:18px;font-size:13px;margin-top:6px;">
+          <li>三类新争议：①承诺型（终身免费换新未兑现，觅光 11/04）；②召回型（同批次召回未通知、超期拒修，初普）；③质保型（换新无质保、维修一口价，极萌，第 1 期已报）。</li>
+          <li>共性：争议均不在"是否坏了"，而在"承诺是否可查、通知是否到位"。可留痕的承诺（订单号、公告、通知记录）比口头承诺更能降低舆情风险。</li>
+        </ul>
+      </div>
+      <div class="cat">
+        <h4>使用安全个案</h4>
+        <ul style="padding-left:18px;font-size:13px;margin-top:6px;">
+          <li>本期可核实的个案：名塑 V 脸仪灼伤（掉皮、凹陷，2026-01）、Ulike 出光配件爆裂（自述）、极萌大排灯视力下降（2025-09）。</li>
+          <li>涉及部位集中在面部与眼部，均为高敏感区；"灼伤/爆裂/视力"三类描述一旦进入公开报道，对品牌信任的冲击远大于普通差评。</li>
+        </ul>
+      </div>
+      <div class="cat">
+        <h4>行业规模与结构</h4>
+        <ul style="padding-left:18px;font-size:13px;margin-top:6px;">
+          <li>2026 年中国家庭美容仪器行业营收约 480 亿元、同比 +12.3%，面部护理仪器增速突破 15%，行业渗透率 32.8%（奥维监测，10/14 发布）——为目前最新可引口径。</li>
+          <li>大促大盘参照：抖音商城双11 好物节首日，美妆与个护行业商家成交额同比 +101%（10/18 券商周报引用官方数据）。</li>
+          <li>结构提示：增量向"高端榜单品牌"与"百元级白牌"两端集中，中价带竞争最激烈，也是售后争议最集中的价格段。</li>
+        </ul>
+      </div>
+      <div class="cat">
+        <h4>海外合规与产品线外延</h4>
+        <ul style="padding-left:18px;font-size:13px;margin-top:6px;">
+          <li>JOVS 新增 FDA 510(k)（JE2 电刺激美容设备），NuFACE FIX+ 510(k) 档案更新——海外合规文档正被品牌当作可核验的信任资产使用。</li>
+          <li>产品线外延：JOVS 由面罩扩至 EMS 塑形腰带 Pro、科施佳由面罩扩至美臀仪/塑形腰带、索朗特覆盖眼部与腰腹——"面部设备商向身体塑形延伸"成为共同路径。</li>
+        </ul>
+      </div>
+      <div class="cat">
+        <h4>EMS 腰带类的预期管理</h4>
+        <ul style="padding-left:18px;font-size:13px;margin-top:6px;">
+          <li>CLUSTER 问答区"智商税/无用"评价、SKG 健腹仪争议、专家"腰带不能真正减脂"的说法，指向同一问题：产品卖点在"燃脂"，用户实际感受在"肌肉刺激与热敷"。</li>
+          <li>本类目转化依赖预期设定；宣称与体感落差是负面评价的主要来源，而非硬件故障。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title"><span class="no">05</span>新兴品牌 / 销售亮眼观察</div>
+    <div class="card">
+      <table>
+        <tr><th>品牌/产品</th><th>本期信号（增量）</th><th>状态</th></tr>
+        <tr><td><b>小猫安妮</b></td><td>ZOL 热门榜（11/08）小鱼能量棒限定版 M61 9.8 分/4599 元、标准版 9.9 分/2999 元，双型号同时进榜；淘宝 11/08 小牛角 2.0 脱毛仪 1599 元、500+ 人付款，另布局"舒敏仪冰电波"。第 1 期仅列为待观察<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</td><td><span class="tag t-pos">建议下期纳入常规监测</span></td></tr>
+        <tr><td><b>伯奢</b></td><td>ZOL 热门榜（11/08–11/09）多功能嫩肤射频仪 HU-9808 9.9 分/1499 元，稳居榜首位置；参数含 RF 多极射频+EMS+LED 红蓝光。第 1 期为待观察<span class="past">详见 <a href="https://avery9425.github.io/vd-fit-sentiment-2026-11-01/">第 1 期</a></span>。</td><td><span class="tag t-pos">建议下期纳入常规监测</span></td></tr>
+        <tr><td><b>POYA</b></td><td>本期未检索到新增信号，榜单位次延续第 1 期。</td><td><span class="tag t-neu">继续观察</span></td></tr>
+      </table>
+      <div class="note">按默认规则：新兴品牌经一期观察后，本期将小猫安妮、伯奢列为"建议纳入下期常规监测"，待确认后进入固定名单（名单将扩至 20 家）。</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title"><span class="no">06</span>舆情建议（克制、有依据）</div>
+    <div class="card findings">
+      <div class="finding"><b>1</b><span>本期最有价值的观察是"承诺可核验化"：终身换新、同批次召回、质保范围三类争议，本质都是承诺不可查。对本赛道品牌而言，把承诺写进可检索的公开页面（订单页、质保条款、召回公告）并保留通知记录，比事后解释更能降低负面外溢。</span></div>
+      <div class="finding"><b>2</b><span>安全个案的处置节奏值得关注：名塑个案在投诉后出现"赔付 100 元并要求好评"的描述，极萌视力个案以"最高赔付 500 元"结案。同类处置易在二次传播中被解读为"压制评价"，建议以书面处理结论替代口头议价。</span></div>
+      <div class="finding"><b>3</b><span>EMS 腰带类目应把"预期管理"前置：CLUSTER 的"智商税"评价与 SKG 的安全争议，来源均是"燃脂"卖点与"肌肉刺激/热敷"体感的落差。宣传口径若集中于体感与辅助定位，负面评价的攻击面会明显收窄。</span></div>
+      <div class="finding"><b>4</b><span>产品线外延（JOVS、科施佳、索朗特均从面部走向身体塑形）正在降低单一品类的竞争强度，但同时把面部品牌的售后体系带到身体品类，质保口径是否统一，是下一阶段需要关注的执行细节。</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title"><span class="no">07</span>方法与来源说明</div>
+    <div class="card" style="font-size:13px;">
+      <ul style="padding-left:20px;">
+        <li><b>监测窗口</b>：2026-11-02 至 2026-11-09（近 7 天），紧接第 1 期窗口；少量跨窗口事件在条目中标注具体日期。</li>
+        <li><b>渠道</b>：公开新闻与行业网站、投诉平台公开页（黑猫投诉、消费保）、电商公开榜单与类目页（京东、淘宝、苏宁）、品牌官网与海外公开数据库（FDA 510(k)/MAUDE）。</li>
+        <li><b>往期去重与交叉引用（本期起执行）</b>：① 同一事件/数据往期已详报且本期无新进展 → 一句话带过并标注"详见第 X 期"链接；② 同一事件有新进展 → 只写增量，背景以往期链接引导；③ 同一品牌的不同新事件（新融资、新品、新投诉）正常完整报道；④ 市场规模/榜单数据以最新发布口径为准，旧口径不重复引用。本期引用行业规模为 10/14 奥维监测口径。</li>
+        <li><b>局限</b>：公开可检索信息形成的概览级画像，非全量舆情平台精确统计；声量分级为示意性判断；电商销量与评分为检索时点数据，随时变动；投诉内容均为"据投诉人自述"，不代表事实认定。</li>
+        <li><b>口径变更</b>：名塑由"正面为主"调整为"正负交织"（补录 2026-01 灼伤投诉）；索朗特、蓝宝由"无显著动态"调整为"渠道有声量"（检索到在售信息）。</li>
+        <li><b>名单滚动</b>：小猫安妮、伯奢建议纳入下期常规监测（由 18 家扩至 20 家）；slleaf 本期无动态，按规则累计计数，连续 3 期无动态后移入"市场活跃度低品牌（保持监测）"板块。</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="foot">BRAND REPUTATION &amp; SENTIMENT REVIEW · VD FIT 产品团队<br>MOVE WITH CONFIDENCE · VD FIT</div>
+
+</div>
+</body>
+</html>
